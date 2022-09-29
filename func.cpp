@@ -2,15 +2,15 @@
 #include <cstdlib>
 #include <locale.h>
 
-void swap(char* v[], int i, int j);
-void qsort(char* v[], int left, int right);
+void swap(char v[], int i, int j);
+void qsort(char v[], int left, int right);
 
 
 /* qsort: сортирует v[left]...v[right] по возрастанию */ 
-void qsort(char* v[], int left, int right)
+void qsort(char v[], int left, int right)
 {
     int i, last;
-    void swap(char* v[], int i, int j);
+    void swap(char v[], int i, int j);
     if (left >= right) /* ничего не делается, если */
         return; /* в массиве менее двух элементов */ 
     swap(v, left, (left + right)/2); /* делящий элемент */
@@ -24,19 +24,19 @@ void qsort(char* v[], int left, int right)
 }
 
 /* swap: поменять местами v[i] и v[j] */
-void swap(char* v[], int i, int j)
+void swap(char v[], int i, int j)
 {
     char temp;
-    temp = *v[i];
-    *v[i] = *v[j];
-    *v[j] = temp;
+    temp = v[i];
+    v[i] = v[j];
+    v[j] = temp;
 }
 
 int main()
 {
-    char* arr[] = {"a", "h", "l", "d", "z", "a"};
+    char arr[] = {'af', 'bcd', 'bcf', 'defg', 'def', 'ab'};
     qsort(arr, 0, 5);
     for (int i = 0; i < 8; i++)
-        printf("%i\n", arr[i]);
+        printf("%c\n", arr[i]);
 }
 

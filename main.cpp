@@ -2,10 +2,40 @@
 #include <cstdlib>
 #include <locale.h>
 
+int comparator(const void* aptr, const void* bptr);
+
 typedef struct {
     char *begin;
     unsigned len;
 } LINE;
+
+int comparator(const void* aptr, const void* bptr)
+{
+    const char* a = (const char*)aptr;
+    const char* b = (const char*)bptr;
+    int i=0;
+    int a_eq_b = 1;
+    while (*(a+i) != '\0')
+    {
+        if ((int)*a < (int)*b)
+        {
+            return -1;
+        }
+        else if ((int)*a > (int)*b)
+            return 1;
+        else if ((int)*a == (int)*b)
+            continue;
+    }
+    //int i=(int)a;
+    //while (*((int)a + i*sizeof()) != '\0')
+
+    /*if ((not isalpha(*a)) || (not isalpha(*b)))
+        return 0;*/
+    printf("%i\n", a[5]);
+    printf("%i\n", (int)*b);   
+    return 0;
+
+}
 
 int main (){
     setlocale(LC_ALL, "RUS");
@@ -58,12 +88,13 @@ int main (){
                 {
                 stroki[numb_strok].begin = begining;
                 stroki[numb_strok].len = lenght;
-                printf("%u\n", stroki[numb_strok].len);
+                //printf("%u\n", stroki[numb_strok].len);
                 numb_strok++;
                 }
             lenght = 0;
             line_empty = 1;
-            //begining = &buffer[i+1];
+            if (i < lSize - 1)
+                begining = &buffer[i+1];
         }
         else
             {
@@ -72,7 +103,8 @@ int main (){
                 line_empty = 0;
             }
     }
-
+    printf("%c %c\n", *stroki[0].begin, *stroki[1].begin);
+    printf("%i\n", comparator(stroki[0].begin, stroki[1].begin));
     fclose(fp);
     free(buffer);
     return 0;

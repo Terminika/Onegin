@@ -23,22 +23,6 @@ void qsort(char v[], int left, int right);
 int comparator(const void* aptr, const void* bptr);
 
 
-
-int comparator(const void* aptr, const void* bptr)
-{
-    //const char* a = *(const char**)aptr;
-    //const char* b = *(const char**)bptr;
-    //int i=(int)a;
-    //while (*((int)a + i*sizeof()) != '\0')
-
-    /*if ((not isalpha(*a)) || (not isalpha(*b)))
-        return 0;*/
-    printf("%i\n", *(const int*)aptr);
-    printf("%i\n", *(const int*)bptr);   
-    return 0;
-
-}
-
 /* qsort: сортирует v[left]...v[right] по возрастанию */ 
 void qsort(char v[], int left, int right)
 {
